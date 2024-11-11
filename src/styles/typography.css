@@ -1,0 +1,113 @@
+@font-face { 
+    font-family: 'Inter'; 
+    font-style: normal; 
+    font-weight: 900; 
+    font-display: swap; 
+    src: url('/fonts/Inter-Black.woff2') format('woff2'); 
+}
+
+@font-face { 
+    font-family: 'Inter'; 
+    font-style: normal; 
+    font-weight: 700; 
+    font-display: swap; 
+    src: url('/fonts/Inter-Bold.woff2') format('woff2'); 
+}
+
+@font-face { 
+    font-family: 'Inter'; 
+    font-style: normal; 
+    font-weight: 500; 
+    font-display: swap; 
+    src: url('/fonts/Inter-Medium.woff2') format("woff2"); 
+}
+
+@font-face { 
+    font-family: 'Inter'; 
+    font-style: normal; 
+    font-weight: 400; 
+    font-display: swap; 
+    src: url('/fonts/Inter-Regular.woff2') format('woff2'); 
+}
+
+@font-face { 
+    font-family: 'Inter'; 
+    font-style: normal; 
+    font-weight: 600; 
+    font-display: swap; 
+    src: url('/fonts/Inter-SemiBold.woff2') format('woff2'); 
+}
+
+:root {
+    --elpuas-preset-fontweight-black: 900;
+    --elpuas-preset-fontweight-bold: 700;
+    --elpuas-preset-fontweight-semibold: 600;
+    --elpuas-preset-fontweight-medium: 500;
+    --elpuas-preset-fontweight-regular: 400;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: var(--elpuas-preset-fontsize-base);
+    font-weight: var(--elpuas-preset-fontweight-regular);
+    line-height: 1.6;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: 1.2;
+    margin: 0;
+}
+
+h1, 
+.h1 {
+    font-size: var(--elpuas-preset-fontsize-h1);
+    font-weight: var(--elpuas-preset-fontweight-bold);
+    letter-spacing: -3.5px;
+
+    @media (max-width: 900px) {
+        letter-spacing: -1.5px;
+    }
+}
+
+h2,
+.h2,
+h2 strong {
+    font-size: var(--elpuas-preset-fontsize-h2);
+}
+
+h3,
+.h3,
+h3 strong {
+    font-size: var(--elpuas-preset-fontsize-h3);
+}
+
+h4,
+.h4,
+h4 strong {
+    font-size: var(--elpuas-preset-fontsize-h4);
+}
+
+h5,
+h6,
+.h5,
+.h6,
+h5 strong,
+h6 strong {
+    font-size: var(--elpuas-preset-fontsize-h5);
+}
+
+p, a, li, span, strong, em, input, textarea, select {
+    font-size: var(--elpuas-preset-fontsize-base);
+    line-height: 1.6;
+    margin: 0;
+}
+
+p {
+    margin-bottom: var(--elpuas-preset-margin-xl);
+}

@@ -1,0 +1,164 @@
+:root {
+	/* Font family */
+	--elpuas-preset-fontsize-h1: clamp(74px, calc(4.625rem + ((1vw - 7.68px) * 4.661)), 96px);
+    --elpuas-preset-fontsize-h2: clamp(42px, calc(2.625rem + ((1vw - 7.68px) * 6.7797)), 74px);
+    --elpuas-preset-fontsize-h3: clamp(36px, calc(2.25rem + ((1vw - 7.68px) * 1.2712)), 42px);
+    --elpuas-preset-fontsize-h4: clamp(24px, calc(1.5rem + ((1vw - 7.68px) * 2.5424)), 36px);
+    --elpuas-preset-fontsize-h5: 24px;
+    --elpuas-preset-fontsize-base: 18px;
+
+	/* Colors */
+    --elpuas-preset-color-primary: #D8FF00;
+    --elpuas-preset-color-secondary: #B6D600;
+    --elpuas-preset-color-tertiary: #5E6F00;
+    --elpuas-preset-color-white: #FFF;
+    --elpuas-preset-color-black: #333;
+
+	/* Base spacing unit */
+	--elpuas-preset-space-xxs: 4px;
+	--elpuas-preset-space-xs: 8px;
+	--elpuas-preset-space-sm: 12px;
+	--elpuas-preset-space-md: 16px;
+	--elpuas-preset-space-lg: 24px;
+	--elpuas-preset-space-xl: 32px;
+	--elpuas-preset-space-xxl: 48px;
+	--elpuas-preset-space-xxxl: 64px;
+
+	/* Responsive larger spacers using clamp */
+	--elpuas-preset-space-xxxl-large: clamp(80px, 10vw, 100px);  /* Minimum 80px, preferred 10vw, max 100px */
+	--elpuas-preset-space-xxxxl-large: clamp(100px, 12vw, 120px); /* Minimum 100px, preferred 12vw, max 120px */
+
+	/* Standard margins */
+	--elpuas-preset-margin-xs: var(--elpuas-preset-space-xs);
+	--elpuas-preset-margin-sm: var(--elpuas-preset-space-sm);
+	--elpuas-preset-margin-md: var(--elpuas-preset-space-md);
+	--elpuas-preset-margin-lg: var(--elpuas-preset-space-lg);
+	--elpuas-preset-margin-xl: var(--elpuas-preset-space-xl);
+	--elpuas-preset-margin-xxxl-large: var(--elpuas-preset-space-xxxl-large);
+	--elpuas-preset-margin-xxxxl-large: var(--elpuas-preset-space-xxxxl-large);
+
+	/* Standard paddings */
+	--elpuas-preset-padding-xs: var(--elpuas-preset-space-xs);
+	--elpuas-preset-padding-sm: var(--elpuas-preset-space-sm);
+	--elpuas-preset-padding-md: var(--elpuas-preset-space-md);
+	--elpuas-preset-padding-lg: var(--elpuas-preset-space-lg);
+	--elpuas-preset-padding-xl: var(--elpuas-preset-space-xl);
+	--elpuas-preset-padding-xxxl-large: var(--elpuas-preset-space-xxxl-large);
+	--elpuas-preset-padding-xxxxl-large: var(--elpuas-preset-space-xxxxl-large);
+
+	/* Box Shadow */
+	--elpuas-preset-box-shadow: 0 2px 6px rgba(var51, 51, 51, 25%), 0 8px 24px rgba(var51, 51, 51, 33%), 0 16px 32px rgba(var51, 51, 51, 33%);
+
+	--elpuas-preset-content-width: 1240px;
+}
+
+body {
+	font-family: 'Inter', sans-serif;
+	font-size: var(--elpuas-preset-fontsize-base);
+	font-weight: var(--elpuas-preset-fontweight-regular);
+	line-height: 1.6;
+	margin: 0;
+	background-color: var(--elpuas-preset-color-primary);
+	color: var(--elpuas-preset-color-tertiary);
+}
+
+main {
+	max-width: var(--elpuas-preset-content-width);
+	margin: 0 auto;
+	padding-left: var(--elpuas-preset-padding-lg);
+	padding-right: var(--elpuas-preset-padding-lg);
+}
+
+
+table {
+	width: 100%;
+}
+img {
+	max-width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+code {
+	padding: var(--elpuas-preset-padding-xxs) var(--elpuas-preset-padding-xs);
+	border-radius: 2px;
+	color: var(--elpuas-preset-color-black);
+	background-color: var(--elpuas-preset-color-secondary);
+}
+pre {
+	padding: 1.5em;
+}
+pre > code {
+	all: unset;
+}
+blockquote {
+	padding: 0 0 0 var(--elpuas-preset-padding-lg);
+	margin: 0px;
+}
+
+hr {
+	border: none;
+}
+
+p a,
+a {
+	color: var(--elpuas-preset-color-tertiary);
+	text-decoration-color: var(--elpuas-preset-color-secondary);
+	text-decoration-thickness: 2px;
+	text-underline-offset: 2px;
+	font-weight: bold;
+
+	&:hover {
+		color: var(--elpuas-preset-color-secondary);
+		text-decoration-color: var(--elpuas-preset-color-tertiary);
+	}
+}
+
+/* Utilities */
+
+.sr-only {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+	clip: rect(1px 1px 1px 1px);
+	/* maybe deprecated but we need to support legacy browsers */
+	clip: rect(1px, 1px, 1px, 1px);
+	/* modern browsers, clip-path works inwards from each corner */
+	clip-path: inset(50%);
+	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
+	white-space: nowrap;
+}
+
+.alignCenter {
+	text-align: center;
+	align-items: center;
+}
+
+.alignRight {
+	text-align: right;
+	align-items: flex-end;
+}
+
+.alignLeft {
+	text-align: left;
+	align-items: flex-start;
+}
+
+.alignFull {
+	margin: 0 calc(50% - 50vw);
+	max-width: 100vw;
+	width: 100vw;
+}
+
+body:has(.hamburger.active) {
+	overflow: hidden;
+}
+
+.spacer {
+	display: block;
+	margin-top: var(--elpuas-preset-margin-xxxl-large);
+}

@@ -1,0 +1,153 @@
+---
+import HeaderLink from './HeaderLink.astro';
+import Hamburger from './Hamburger.astro';
+import { Image } from 'astro:assets';
+import Logo from '../images/logo-updated-150x150.webp';
+
+---
+
+<header>
+    <nav>
+        <h2 class="brand-logo" aria-label="ElPuas Logo Icon">
+            <a href="/" aria-label="ELPuas Digital Crafts" title="ELPuas Digital Crafts">
+                <Image src={Logo} alt="ELPuas Digital Crafts" />
+            </a>
+        </h2><!-- /.brand-logo -->
+        <Hamburger />
+        <div class="internal-links">
+            <HeaderLink href="/">Home</HeaderLink>
+            <HeaderLink href="/about">About</HeaderLink>
+            <HeaderLink href="/services">Services</HeaderLink>
+            <HeaderLink href="/crafted-with-love">Crafted with Love</HeaderLink>
+            <HeaderLink href="/contact">Contact</HeaderLink>
+        </div><!-- /.internal-links -->
+    </nav>
+</header>
+
+<style>
+    header {
+        container-type: inline-size;
+        container-name: header;
+        max-width: var(--elpuas-preset-content-width);
+        margin: 0 auto;
+        padding-left: var(--elpuas-preset-padding-lg);
+        padding-right: var(--elpuas-preset-padding-lg);
+        padding-top: var(--elpuas-preset-padding-lg);
+    }
+    .brand-logo {
+        width: 150px;
+        height: 150px;
+        position: relative;
+        z-index: 10;
+
+        a {
+            border: none;
+            display: block;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            transition: transform 0.3s ease-in-out;
+            width: 100%;
+
+            &:hover {
+                animation: pulse 1s infinite;
+                svg {
+                    fill: var(--elpuas-preset-color-secondary);
+                }
+            }
+        }
+    }
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        a {
+            padding: 1em 0.5em;
+            border-bottom: 4px solid transparent;
+            text-decoration: none;
+        }
+    }
+
+    .internal-links {
+        align-items: center;
+        background-color: var(--elpuas-preset-color-black);
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: center;
+        left: 0;
+        position:fixed;
+        top: 0;
+        width: 100vw;
+        z-index: 5;
+        transition: transform 0.3s ease;
+        transform: translate(100vw);
+
+        a {
+            color: var(--elpuas-preset-color-primary);
+            font-size: var(--elpuas-preset-fontsize-h4);
+            font-weight: var(--elpuas-preset-fontweight-semibold);
+            margin: 0.25em 0;
+            padding: 0;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+
+            &:hover {
+                color: var(--elpuas-preset-color-secondary);
+            }
+        }
+
+        &:is(.expanded) {
+            transform: translateX(0);
+        }
+    }
+
+    nav:has(.expanded) {
+        .brand-logo {
+            a {
+                transform: scale(1.1);
+            }
+
+            svg {
+                fill: var(--elpuas-preset-color-primary);
+            }
+        }
+    }
+
+    @container header ( min-width: 900px ) {
+        .internal-links {
+            background-color: transparent;
+            width: fit-content;
+            height: auto;
+            position: initial;
+            display: initial;
+            transform: initial;
+
+            a {
+                color: var(--elpuas-preset-color-tertiary);
+                font-size: var(--elpuas-preset-fontsize-base);
+                font-weight: var(--elpuas-preset-fontweight-regular);
+                margin: 0 1em;
+                padding: 0.5em 0;
+                text-decoration: none;
+                transition: color 0.3s ease-in-out;
+
+                &:hover {
+                    color: var(--elpuas-preset-color-secondary);
+                }
+            }
+        }
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+</style>
