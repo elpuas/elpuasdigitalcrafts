@@ -3,6 +3,20 @@ import HeaderLink from './HeaderLink.astro';
 import Hamburger from './Hamburger.astro';
 import { Image } from 'astro:assets';
 import Logo from '../images/logo-updated-150x150.webp';
+import { ui, defaultLang } from '../i18n/config';
+
+// Get current URL path to determine language
+const { pathname } = Astro.url;
+const currentLang = pathname.startsWith('/es') ? 'es' : defaultLang;
+
+const t = ui[currentLang];
+
+const getLocalePath = (path: string, lang: string) => {
+    if (lang === defaultLang) {
+        return path === '/' ? '/' : `${path}`;
+    }
+        return path === '/' ? `/${lang}` : `/${lang}${path}`;
+};
 
 ---
 
@@ -15,12 +29,12 @@ import Logo from '../images/logo-updated-150x150.webp';
         </h2><!-- /.brand-logo -->
         <Hamburger />
         <div class="internal-links">
-            <HeaderLink href="/">Home</HeaderLink>
-            <HeaderLink href="/about">About</HeaderLink>
-            <HeaderLink href="/services">Services</HeaderLink>
-            <HeaderLink href="/crafted-with-love">Crafted with Love</HeaderLink>
-            <HeaderLink href="/contact">Contact</HeaderLink>
-        </div><!-- /.internal-links -->
+            <HeaderLink href={getLocalePath('/', currentLang)}>{t['nav.home']}</HeaderLink>
+            <HeaderLink href={getLocalePath('/about', currentLang)}>{t['nav.about']}</HeaderLink>
+            <HeaderLink href={getLocalePath('/services', currentLang)}>{t['nav.services']}</HeaderLink>
+            <HeaderLink href={getLocalePath('/crafted-with-love', currentLang)}>{t['nav.crafted']}</HeaderLink>
+            <HeaderLink href={getLocalePath('/contact', currentLang)}>{t['nav.contact']}</HeaderLink>
+        </div>
     </nav>
 </header>
 

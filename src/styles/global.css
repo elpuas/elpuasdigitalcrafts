@@ -8,8 +8,8 @@
     --elpuas-preset-fontsize-base: 18px;
 
 	/* Colors */
-    --elpuas-preset-color-primary: #D8FF00;
-    --elpuas-preset-color-secondary: #B6D600;
+    --elpuas-preset-color-primary: #000000;
+    --elpuas-preset-color-secondary: #D8FF00;
     --elpuas-preset-color-tertiary: #5E6F00;
     --elpuas-preset-color-white: #FFF;
     --elpuas-preset-color-black: #333;
@@ -101,14 +101,14 @@ hr {
 
 p a,
 a {
-	color: var(--elpuas-preset-color-tertiary);
+	color: var(--elpuas-preset-color-secondary);
 	text-decoration-color: var(--elpuas-preset-color-secondary);
 	text-decoration-thickness: 2px;
 	text-underline-offset: 2px;
 	font-weight: bold;
 
 	&:hover {
-		color: var(--elpuas-preset-color-secondary);
+		color: var(--elpuas-preset-color-tertiary);
 		text-decoration-color: var(--elpuas-preset-color-tertiary);
 	}
 }
