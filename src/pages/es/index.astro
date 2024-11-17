@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/Hero.astro';
+import Divider from '../../components/Divider.astro';
 import { fetchGraphQL } from '../../utils/fetch-graphql';
 import { StructuredText } from '@datocms/astro/StructuredText';
 import { HOMEPAGE_QUERY, type HomepageContent } from '../../queries/homepage';
@@ -18,6 +19,7 @@ const callout = data.homepage.content[0].content;
             <h1 class="h5">Creando Experiencias Digitales</h1>
             <p>Diseñamos Soluciones <strong>con</strong> un Toque Humano</p>
         </Hero>
+        <Divider position="right" />
         <section class="callout dots-pattern">
             <StructuredText data={callout} />
         </section>
@@ -26,21 +28,18 @@ const callout = data.homepage.content[0].content;
 
 <style>
     .callout {
-        container-type: inline-size;
-        margin: var(--elpuas-preset-margin-xxl-large) 0;
         text-align: center;
         position: relative;
+        width: 100%;
 
         &::before {
             left: 0;
             top: -16px;
         }
-
         &::after {
             right: 10%;
             bottom: -42px;
         }
-
         h2,
         h2 strong {
             font-size: var(--elpuas-preset-fontsize-h3);

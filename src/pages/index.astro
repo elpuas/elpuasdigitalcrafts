@@ -2,15 +2,24 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Divider from '../components/Divider.astro';
+import Expertise from '../components/Expertise.astro';
 import { fetchGraphQL } from '../utils/fetch-graphql';
 import { StructuredText } from '@datocms/astro/StructuredText';
 import { HOMEPAGE_QUERY, type HomepageContent } from '../queries/homepage';
+import LabIcon from '../images/web-icon.svg';
+import ShoppingBagIcon from '../images/shopping-bag.svg';
+import SupportIcon from '../images/support.svg';
+import MaskIcon from '../images/mask.svg';
 
 const variables = { locale: 'en' };
-
 const data = await fetchGraphQL<HomepageContent>(HOMEPAGE_QUERY, variables);
-
 const callout = data.homepage.content[0].content;
+const expertiseItems = [
+    { title: 'Custom Web Development', icon: LabIcon },
+    { title: 'E-Commerce Solutions', icon: ShoppingBagIcon },
+    { title: 'Maintenance & Support', icon: SupportIcon },
+    { title: 'White-Label Services', icon: MaskIcon },
+];
 
 ---
 
@@ -24,6 +33,7 @@ const callout = data.homepage.content[0].content;
         <section class="callout dots-pattern">
             <StructuredText data={callout} />
         </section>
+        <Expertise title="Our Expertise" items={expertiseItems} />
 	</main>
 </Layout>
 
