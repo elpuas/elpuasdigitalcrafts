@@ -1,40 +1,49 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Button from '../components/Button.astro';
+import Hero from '../components/Hero.astro';
+import Divider from '../components/Divider.astro';
+import { fetchGraphQL } from '../utils/fetch-graphql';
+import { StructuredText } from '@datocms/astro/StructuredText';
+import { HOMEPAGE_QUERY, type HomepageContent } from '../queries/homepage';
+
+const variables = { locale: 'en' };
+
+const data = await fetchGraphQL<HomepageContent>(HOMEPAGE_QUERY, variables);
+
+const callout = data.homepage.content[0].content;
+
 ---
 
 <Layout title="Welcome to ElPuas Digital Crafts">
-	<main>
-		<section class="homepage-hero">
-			<h1 class="h5">Crafting Unique Experiences</h1>
-			<p>We Code Digital Crafts for Humans</p>
-			<Button href="/about" className="primary" label="Learn More" />
-		</section>
+    <main>
+        <Hero buttonHref="/about" buttonLabel="Get Started">
+            <h1 class="h5">Crafting Unique Experiences</h1>
+            <p>We Code Digital Crafts <strong>for</strong> Humans</p>
+        </Hero>
+        <Divider position="right" />
+        <section class="callout dots-pattern">
+            <StructuredText data={callout} />
+        </section>
 	</main>
 </Layout>
 
 <style>
-	.homepage-hero {
-        display: flex;
-        flex-direction: column;
-        margin: var(--elpuas-preset-margin-xxxl-large) 0;
+    .callout {
+        text-align: center;
+        position: relative;
+        width: 100%;
 
-        .h5 {
-            text-transform: uppercase;
-            font-weight: var(--elpuas-preset-fontweight-regular);
-            letter-spacing: normal;
+        &::before {
+            left: 0;
+            top: -16px;
         }
-
-        p,
-        strong {
-            font-size: var(--elpuas-preset-fontsize-h1);
-            font-weight: var(--elpuas-preset-fontweight-bold);
-            letter-spacing: -3.5px;
-            line-height: 1.25;
-            margin: var(--elpuas-preset-margin-xl) 0;
+        &::after {
+            right: 10%;
+            bottom: -42px;
         }
-        strong {
-            color: var(--elpuas-preset-color-secondary);
+        h2,
+        h2 strong {
+            font-size: var(--elpuas-preset-fontsize-h3);
         }
-	}
+    }
 </style>

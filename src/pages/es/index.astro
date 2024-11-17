@@ -1,40 +1,49 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Button from '../../components/Button.astro';
+import Hero from '../../components/Hero.astro';
+import { fetchGraphQL } from '../../utils/fetch-graphql';
+import { StructuredText } from '@datocms/astro/StructuredText';
+import { HOMEPAGE_QUERY, type HomepageContent } from '../../queries/homepage';
+
+const variables = { locale: 'es' };
+
+const data = await fetchGraphQL<HomepageContent>(HOMEPAGE_QUERY, variables);
+
+const callout = data.homepage.content[0].content;
 ---
 
-<Layout title="Welcome to ElPuas Digital Crafts">
+<Layout title="Bienvenidos a ElPuas Digital Crafts">
     <main>
-        <section class="hero">
+        <Hero buttonHref="/es/about" buttonLabel="Conoce más">
             <h1 class="h5">Creando Experiencias Digitales</h1>
-            <p>Diseñamos Soluciones con un Toque Humano</p>
-            <Button href="/about" className="primary" label="Learn More" />
+            <p>Diseñamos Soluciones <strong>con</strong> un Toque Humano</p>
+        </Hero>
+        <section class="callout dots-pattern">
+            <StructuredText data={callout} />
         </section>
     </main>
 </Layout>
 
 <style>
-	.hero {
-        display: flex;
-        flex-direction: column;
-        margin: var(--elpuas-preset-margin-xxxl-large) 0;
+    .callout {
+        container-type: inline-size;
+        margin: var(--elpuas-preset-margin-xxl-large) 0;
+        text-align: center;
+        position: relative;
 
-        .h5 {
-            text-transform: uppercase;
-            font-weight: var(--elpuas-preset-fontweight-regular);
-            letter-spacing: normal;
+        &::before {
+            left: 0;
+            top: -16px;
         }
 
-        p,
-        strong {
-            font-size: var(--elpuas-preset-fontsize-h1);
-            font-weight: var(--elpuas-preset-fontweight-bold);
-            letter-spacing: -3.5px;
-            line-height: 1.25;
-            margin: var(--elpuas-preset-margin-xl) 0;
+        &::after {
+            right: 10%;
+            bottom: -42px;
         }
-        strong {
-            color: var(--elpuas-preset-color-secondary);
+
+        h2,
+        h2 strong {
+            font-size: var(--elpuas-preset-fontsize-h3);
         }
-	}
+    }
 </style>

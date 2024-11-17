@@ -111,3 +111,15 @@ p, a, li, span, strong, em, input, textarea, select {
 p {
     margin-bottom: var(--elpuas-preset-margin-xl);
 }
+
+p strong,
+p mark,
+h1 strong,
+h1 mark,
+h2 strong,
+h2 mark,
+h3 strong,
+h3 mark {
+    color: var(--elpuas-preset-color-tertiary);
+    background-color: transparent;
+}
