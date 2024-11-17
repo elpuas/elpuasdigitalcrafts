@@ -10,7 +10,8 @@
 	/* Colors */
     --elpuas-preset-color-primary: #000000;
     --elpuas-preset-color-secondary: #D8FF00;
-    --elpuas-preset-color-tertiary: #5E6F00;
+    --elpuas-preset-color-tertiary: #00C7BE;
+	--elpuas-preset-color-quaternary: #5E6F00;
     --elpuas-preset-color-white: #FFF;
     --elpuas-preset-color-black: #333;
 
@@ -59,7 +60,7 @@ body {
 	line-height: 1.6;
 	margin: 0;
 	background-color: var(--elpuas-preset-color-primary);
-	color: var(--elpuas-preset-color-tertiary);
+	color: var(--elpuas-preset-color-secondary);
 }
 
 main {
