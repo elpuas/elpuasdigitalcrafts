@@ -3,17 +3,12 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Divider from '../components/Divider.astro';
 import Expertise from '../components/Expertise.astro';
-import { fetchGraphQL } from '../utils/fetch-graphql';
-import { StructuredText } from '@datocms/astro/StructuredText';
-import { HOMEPAGE_QUERY, type HomepageContent } from '../queries/homepage';
 import LabIcon from '../images/web-icon.svg';
 import ShoppingBagIcon from '../images/shopping-bag.svg';
 import SupportIcon from '../images/support.svg';
 import MaskIcon from '../images/mask.svg';
+import BackgroundVideo from '../components/BackgroundVideo.astro';
 
-const variables = { locale: 'en' };
-const data = await fetchGraphQL<HomepageContent>(HOMEPAGE_QUERY, variables);
-const callout = data.homepage.content[0].content;
 const expertiseItems = [
     { title: 'Custom Web Development', icon: LabIcon },
     { title: 'E-Commerce Solutions', icon: ShoppingBagIcon },
@@ -25,15 +20,27 @@ const expertiseItems = [
 
 <Layout title="Welcome to ElPuas Digital Crafts">
     <main>
+        <BackgroundVideo webmSrc="/media/video-background.webm" mp4Src="/media/video-background.mp4" />
         <Hero buttonHref="/about" buttonLabel="Get Started">
             <h1 class="h5">Crafting Unique Experiences</h1>
             <p>We Code Digital Crafts <strong>for</strong> Humans</p>
         </Hero>
         <Divider position="right" />
         <section class="callout dots-pattern">
-            <StructuredText data={callout} />
+            <h2>At <strong>ElPuas Digital Crafts</strong>, we specialize in creating tailor-made web solutions that align perfectly with your business objectives.</h2>
         </section>
         <Expertise title="Our Expertise" items={expertiseItems} />
+        <Divider position="left" />
+        <div class="excerpt-section alignFull">
+            <div class="excerpt-section-content">
+                <div class="excerpt-section-content-text dots-pattern">
+                    <h2>Building a <strong>Trusted Reputation</strong></h2>
+                    <p>
+                        We’ve supported a diverse range of clients—from emerging businesses to established global companies—across various industries, delivering measurable online results through our expertise in design, development, and support.
+                    </p>
+                </div>
+            </div><!-- /.expertise-section__content -->
+        </div>
 	</main>
 </Layout>
 
@@ -54,6 +61,43 @@ const expertiseItems = [
         h2,
         h2 strong {
             font-size: var(--elpuas-preset-fontsize-h3);
+        }
+    }
+
+    .excerpt-section {
+        background-image: url('/fishcostarica-laptop-half.webp');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: right;
+        height: 832px;
+        .excerpt-section-content {
+            max-width: var(--elpuas-preset-content-width);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            margin: 0 auto;
+            padding-left: var(--elpuas-preset-padding-lg);
+            padding-right: var(--elpuas-preset-padding-lg);
+            .excerpt-section-content-text {
+                max-width: 50%;
+                h2,
+                h2 strong {
+                    font-size: var(--elpuas-preset-fontsize-h3);
+                    margin-bottom: 24px;
+                }
+
+                p {
+                    font-size: var(--elpuas-preset-fontsize-h5);
+                }
+
+                &::before {
+                    right: 45%;
+                }
+
+                &::after {
+                    left: 6%;
+                }
+            }
         }
     }
 </style>
