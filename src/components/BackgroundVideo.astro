@@ -16,17 +16,17 @@ const { webmSrc, mp4Src } = Astro.props;
 
 <style>
     .background-video {
-        position: fixed;
+        position: absolute;
         width: 100%;
         z-index: -1;
         top: 0;
         height: 100vh;
-    }
-
-    .background-video video {
-        width: 100%;
-        object-position: top;
-        object-fit: cover;
-        height: 100vh;
+        
+        video {
+            width: 100%;
+            object-position: top;
+            object-fit: cover;
+            height: 100vh;
+        }
     }
 </style>

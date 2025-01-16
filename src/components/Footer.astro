@@ -1,0 +1,84 @@
+---
+interface Props {
+    title: string; 
+    icon: any;
+    alText: string | undefined;
+}
+
+const { title, icon, alText } = Astro.props;
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-background">
+            <img src={icon} alt={alText} class={title} />
+        </div>
+        <div class="footer-content-wrapper">
+            <div class="footer-content-inner">
+                <div class="contact-info">
+                    <p>Cartago, Costa Rica</p>
+                    <p><a href="mailto:elpuas@gmail.com">Email Us</a></p>
+                    <p><a href="tel:+50660601034">+506 6060 1034</a></p>
+                </div>
+                <div class="contact-info">
+                    <p>Miami, USA</p>
+                    <p><a href="mailto:elpuas@gmail.com">Email Us</a></p>
+                    <p><a href="tel:+17863347">+1 (786) 334 7984</a></p>
+                </div>
+                <div class="contact-info">
+                    <p>Rome, Italy</p>
+                    <p><a href="mailto:elpuas@gmail.com">Email Us</a></p>
+                    <p><a href="tel:+3933828355">+39 338 283 5594</a></p>
+                </div>
+                <p>© {currentYear} El Puas</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    footer {
+        .footer-content {
+            position: relative;
+        } 
+
+        .footer-background {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+            transform: translateY(-50%);
+
+            img {
+                max-width: none;
+            }
+        }
+
+        .footer-content-wrapper {
+            max-width: var(--elpuas-preset-content-width);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            margin: 0 auto;
+            padding-left: var(--elpuas-preset-padding-lg);
+            padding-right: var(--elpuas-preset-padding-lg);
+            align-items: flex-end;
+        }
+
+        .footer-content-inner {
+            margin-left: auto;
+
+            .contact-info {
+                margin-bottom: 2.125rem;
+
+                p {
+                    margin: 0;
+                    font-size: var(--elpuas-preset-fontsize-h5);
+                }
+            }
+        }
+    }
+</style>
