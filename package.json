@@ -11,6 +11,6 @@
   },
   "dependencies": {
     "@datocms/astro": "^0.3.5",
-    "astro": "^4.16.10"
+    "astro": "^5.1.7"
   }
 }

@@ -1,6 +1,8 @@
 ---
 import Header from '../components/Header.astro';
 import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FooterImage from '../images/footer-decoration.svg';
 interface Props {
 	title: string;
 }
@@ -8,6 +10,7 @@ interface Props {
 const { title } = Astro.props;
 const description = "ElPuas Digital Crafts is a digital agency that specializes in crafting digital experiences for businesses and individuals. We are a team of creatives, developers, and designers who are passionate about creating beautiful and functional websites, applications, and digital products.";
 const image = "/placeholder.png";
+
 ---
 
 <!doctype html>
@@ -18,8 +21,10 @@ const image = "/placeholder.png";
 	<body>
 		<Header />
 		<slot />
+		<Footer icon={FooterImage.src} title="footer-decor" alText="" />
+		<script>
+			import '../scripts/menu.js';
+		</script>
 	</body>
 </html>
-<style is:global>
-	
-</style>
+<style is:global></style>

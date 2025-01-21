@@ -1,0 +1,32 @@
+---
+interface Props {
+    webmSrc: string;
+    mp4Src: string;
+}
+
+const { webmSrc, mp4Src } = Astro.props;
+---
+
+<div class="background-video alignFull">
+    <video autoplay loop muted playsinline>
+        <source src={webmSrc} type="video/webm" />
+        <source src={mp4Src} type="video/mp4" />
+    </video>
+</div>
+
+<style>
+    .background-video {
+        position: absolute;
+        width: 100%;
+        z-index: -1;
+        top: 0;
+        height: 100vh;
+        
+        video {
+            width: 100%;
+            object-position: top;
+            object-fit: cover;
+            height: 100vh;
+        }
+    }
+</style>

@@ -1,0 +1,47 @@
+---
+interface Props {
+    position?: 'left' | 'right';
+    flip?: boolean;
+}
+
+const { 
+    position = 'left',
+    flip = false 
+} = Astro.props;
+---
+
+<div class:list={['divider', `align-${position}`, { 'flip': flip }]}>&nbsp;</div>
+
+<style>
+    .divider {
+        margin: 113px 0;
+        width: 100vw;
+        height: 47px;
+
+        &::before {
+            content: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTM2IiBoZWlnaHQ9IjQ3IiB2aWV3Qm94PSIwIDAgMTM2IDQ3IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB5PSIxOCIgd2lkdGg9IjEzNiIgaGVpZ2h0PSI5IiBmaWxsPSIjRDhGRjAwIi8+CjxyZWN0IHg9Ijc1IiB3aWR0aD0iNjEiIGhlaWdodD0iOSIgZmlsbD0iI0Q4RkYwMCIvPgo8cmVjdCB4PSI0OSIgeT0iMzgiIHdpZHRoPSIxNSIgaGVpZ2h0PSI5IiBmaWxsPSIjRDhGRjAwIi8+Cjwvc3ZnPgo=");
+            width: 136px;
+            display: block;
+            position: absolute;
+            height: 47px;
+        }
+
+        &:is(.align-left) {
+            &::before {
+                left: 0;
+            }
+        }
+
+        &:is(.align-right) {
+            &::before {
+                right: 0;
+            }
+        }
+
+        &:is(.flip) {
+            &::before {
+                transform: rotate(180deg);
+            }
+        }
+    }
+</style>
