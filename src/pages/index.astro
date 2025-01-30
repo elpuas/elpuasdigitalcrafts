@@ -8,6 +8,7 @@ import ShoppingBagIcon from '../images/shopping-bag.svg';
 import SupportIcon from '../images/support.svg';
 import MaskIcon from '../images/mask.svg';
 import BackgroundVideo from '../components/BackgroundVideo.astro';
+import Button from '../components/Button.astro';
 
 const expertiseItems = [
     { title: 'Custom Web Development', icon: LabIcon },
@@ -30,6 +31,7 @@ const expertiseItems = [
             <h2>At <strong>ElPuas Digital Crafts</strong>, we specialize in creating tailor-made web solutions that align perfectly with your business objectives.</h2>
         </section>
         <Expertise title="Our Expertise" items={expertiseItems} />
+        <Button href="/services" className="primary c-blue m-auto" label="View Our Services" />
         <Divider position="left" />
         <div class="excerpt-section alignFull">
             <div class="excerpt-section-content">

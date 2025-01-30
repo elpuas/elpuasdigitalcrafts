@@ -52,5 +52,20 @@ const { label, href, className } = Astro.props;
                 color: var(--elpuas-preset-color-secondary);
             }
         }
+
+        &:is(.c-blue) {
+		background-color: var(--elpuas-preset-color-tertiary);
+		color: var(--elpuas-preset-color-black);
+	
+		&:hover {
+			background-color: var(--elpuas-preset-color-secondary);
+			color: var(--elpuas-preset-color-primary);
+		}
+	}
+	
+        &:is(.m-auto) {
+            margin: 0 auto;
+            display: block;
+        }
     }
 </style>
