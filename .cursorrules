@@ -1,66 +1,66 @@
 {
-  "rules": {
-    "ignorePatterns": [
-      "node_modules/**/*",
-      "dist/**/*",
-      ".astro/**/*",
-      "*.log",
-      ".env",
-      ".env.*"
-    ],
-    "formatOnSave": {
-      "enabled": true,
-      "include": [
-        "**/*.{js,jsx,ts,tsx,astro,css,scss,json,md,mdx}"
-      ]
+    "rules": {
+        "ignorePatterns": [
+            "node_modules/**/*",
+            "dist/**/*",
+            ".astro/**/*",
+            "*.log",
+            ".env",
+            ".env.*"
+        ],
+        "formatOnSave": {
+            "enabled": true,
+            "include": [
+            "**/*.{js,jsx,ts,tsx,astro,css,scss,json,md,mdx}"
+            ]
+        },
+        "organizeImports": {
+            "enabled": true
+        },
+        "compilerOptions": {
+            "baseUrl": ".",
+            "paths": {
+            "@/*": ["src/*"],
+            "@components/*": ["src/components/*"],
+            "@layouts/*": ["src/layouts/*"],
+            "@content/*": ["src/content/*"],
+            "@styles/*": ["src/styles/*"],
+            "@images/*": ["src/images/*"]
+            }
+        }
     },
-    "organizeImports": {
-      "enabled": true
-    },
-    "compilerOptions": {
-      "baseUrl": ".",
-      "paths": {
-        "@/*": ["src/*"],
-        "@components/*": ["src/components/*"],
-        "@layouts/*": ["src/layouts/*"],
-        "@content/*": ["src/content/*"],
-        "@styles/*": ["src/styles/*"],
-        "@images/*": ["src/images/*"]
-      }
+    "context": {
+        "projectInfo": {
+            "name": "ElPuas Digital Crafts",
+            "type": "Astro Website",
+            "description": "A multilingual digital agency website built with Astro"
+        },
+        "conventions": {
+            "components": {
+            "naming": "PascalCase for component names (e.g., HeaderLink.astro)",
+            "location": "All components should be in src/components/",
+            "structure": "Each component should have its styles within the component file"
+            },
+            "content": {
+            "structure": "Markdown files organized by language and type in src/content/",
+            "naming": "kebab-case for content files (e.g., about-us.md)",
+            "metadata": "Each content file should include frontmatter with title, date, and lang fields"
+            },
+            "styles": {
+            "naming": "kebab-case for CSS class names",
+            "methodology": "Using CSS custom properties for theming",
+            "variables": "Prefix custom properties with --elpuas-preset-"
+            },
+            "i18n": {
+            "defaultLocale": "en",
+            "supportedLocales": ["en", "es"],
+            "structure": "Language-specific content in /src/content/{locale}/"
+            }
+        },
+        "dependencies": {
+            "framework": "Astro",
+            "styling": "CSS/SCSS with custom properties",
+            "contentSource": "Markdown files"
+        }
     }
-  },
-  "context": {
-    "projectInfo": {
-      "name": "ElPuas Digital Crafts",
-      "type": "Astro Website",
-      "description": "A multilingual digital agency website built with Astro"
-    },
-    "conventions": {
-      "components": {
-        "naming": "PascalCase for component names (e.g., HeaderLink.astro)",
-        "location": "All components should be in src/components/",
-        "structure": "Each component should have its styles within the component file"
-      },
-      "content": {
-        "structure": "Markdown files organized by language and type in src/content/",
-        "naming": "kebab-case for content files (e.g., about-us.md)",
-        "metadata": "Each content file should include frontmatter with title, date, and lang fields"
-      },
-      "styles": {
-        "naming": "kebab-case for CSS class names",
-        "methodology": "Using CSS custom properties for theming",
-        "variables": "Prefix custom properties with --elpuas-preset-"
-      },
-      "i18n": {
-        "defaultLocale": "en",
-        "supportedLocales": ["en", "es"],
-        "structure": "Language-specific content in /src/content/{locale}/"
-      }
-    },
-    "dependencies": {
-      "framework": "Astro",
-      "styling": "CSS/SCSS with custom properties",
-      "contentSource": "Markdown files"
-    }
-  }
 } 
