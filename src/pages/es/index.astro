@@ -2,27 +2,47 @@
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/Hero.astro';
 import Divider from '../../components/Divider.astro';
-import { fetchGraphQL } from '../../utils/fetch-graphql';
-import { StructuredText } from '@datocms/astro/StructuredText';
-import { HOMEPAGE_QUERY, type HomepageContent } from '../../queries/homepage';
+import Expertise from '../../components/Expertise.astro';
+import LabIcon from '../../images/web-icon.svg';
+import ShoppingBagIcon from '../../images/shopping-bag.svg';
+import SupportIcon from '../../images/support.svg';
+import MaskIcon from '../../images/mask.svg';
+import BackgroundVideo from '../../components/BackgroundVideo.astro';
+import Button from '../../components/Button.astro';
 
-const variables = { locale: 'es' };
-
-const data = await fetchGraphQL<HomepageContent>(HOMEPAGE_QUERY, variables);
-
-const callout = data.homepage.content[0].content;
+const expertiseItems = [
+    { title: 'Desarrollo Web Personalizado', icon: LabIcon },
+    { title: 'Soluciones de Comercio Electrónico', icon: ShoppingBagIcon },
+    { title: 'Mantenimiento y Soporte', icon: SupportIcon },
+    { title: 'Servicios White-Label', icon: MaskIcon },
+];
 ---
 
 <Layout title="Bienvenidos a ElPuas Digital Crafts">
     <main>
+        <BackgroundVideo webmSrc="/media/video-background.webm" mp4Src="/media/video-background.mp4" />
         <Hero buttonHref="/es/about" buttonLabel="Conoce más">
             <h1 class="h5">Creando Experiencias Digitales</h1>
             <p>Diseñamos Soluciones <strong>con</strong> un Toque Humano</p>
         </Hero>
         <Divider position="right" />
         <section class="callout dots-pattern">
-            <StructuredText data={callout} />
+            <h2>En <strong>ElPuas Digital Crafts</strong>, nos especializamos en crear soluciones web personalizadas que se alinean perfectamente con tus objetivos de negocio.</h2>
         </section>
+        <Expertise title="Nuestra Experiencia" items={expertiseItems} />
+        <Button href="/es/services" className="primary c-blue m-auto" label="Ver Nuestros Servicios" />
+        <Divider position="left" />
+        <div class="excerpt-section alignFull">
+            <div class="excerpt-section-content">
+                <div class="excerpt-section-content-text dots-pattern">
+                    <h2>Revolucionando el Desarrollo Web con <strong>Precisión Impulsada por IA</strong></h2>
+                    <p>
+                        Nosotros utilizamos la potencia de la IA para crear sitios web ultra-rápidos y optimizados que se adaptan al comportamiento del usuario y las tendencias de la industria en tiempo real. Desde la automatización inteligente hasta las mejoras de diseño predictivas, nuestro enfoque AI-driven garantiza que cada sitio que construimos no es solo funcional, sino que es futuro-pro. Experimenta la próxima generación de rendimiento web y la innovación.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <Divider position="right" />
     </main>
 </Layout>
 
@@ -43,6 +63,43 @@ const callout = data.homepage.content[0].content;
         h2,
         h2 strong {
             font-size: var(--elpuas-preset-fontsize-h3);
+        }
+    }
+
+    .excerpt-section {
+        background-image: url('/fishcostarica-laptop-half.webp');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: right;
+        height: 832px;
+        .excerpt-section-content {
+            max-width: var(--elpuas-preset-content-width);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            margin: 0 auto;
+            padding-left: var(--elpuas-preset-padding-lg);
+            padding-right: var(--elpuas-preset-padding-lg);
+            .excerpt-section-content-text {
+                max-width: 50%;
+                h2,
+                h2 strong {
+                    font-size: var(--elpuas-preset-fontsize-h3);
+                    margin-bottom: 24px;
+                }
+
+                p {
+                    font-size: var(--elpuas-preset-fontsize-h5);
+                }
+
+                &::before {
+                    right: 45%;
+                }
+
+                &::after {
+                    left: 6%;
+                }
+            }
         }
     }
 </style>
